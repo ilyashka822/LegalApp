@@ -1,0 +1,51 @@
+﻿@page
+@{
+    ViewData["Title"] = "Стоимость";
+}
+
+<div class="page">
+    <div class="page-inner">
+        <div class="page-head">
+            <h1 class="page-title">Стоимость услуг</h1>
+            @* <p class="page-lead">Прозрачные условия — без скрытых платежей. Нажмите на карточку, чтобы обсудить ситуацию.</p> *@
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card" data-situation="Консультация">
+                <h3>Предварительная консультация</h3>
+                <p>Обзор ситуации с предварительной оценкой.</p>
+                <div class="price-value">Бесплатно</div>
+            </div>
+            <div class="price-card" data-situation="Консультация">
+                <h3>Устная консультация</h3>
+                <p>Обзор ситуации с оценкой перспектив</p>
+                <div class="price-value">от 1 500 ₽</div>
+            </div>
+
+            <div class="price-card" data-situation="Консультация">
+                <h3>Письменная консультация</h3>
+                <p>Анализ документов, письменное заключение.</p>
+                <div class="price-value">от 2 500 ₽</div>
+            </div>
+
+            <div class="price-card" data-situation="Договорная работа">
+                <h3>Составление документов</h3>
+                <p>Исковые заявления, претензии, жалобы, ходатайства, договоры.</p>
+                <div class="price-value">от 3 000 ₽</div>
+            </div>
+
+            <div class="price-card" data-situation="Представительство в суде">
+                <h3>Представительство в учреждениях, организациях, суде</h3>
+                @* <p>Участие в судебном заседании, защита интересов доверителя (за 1 день).</p> *@
+                <div class="price-value">от 15 000 ₽</div>
+            </div>
+
+            @* <div class="price-card" data-situation="Другое">
+                <h3>Ведение дела под ключ</h3>
+                <p>Полное сопровождение от консультации до исполнения решения суда.</p>
+                <div class="price-value">по договорённости</div>
+            </div> *@
+
+        </div>
+    </div>
+</div>

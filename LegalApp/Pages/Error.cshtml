@@ -1,0 +1,19 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Ошибка";
+}
+
+<div class="page-container" style="text-align: center;">
+    <h1 class="section-title">Произошла ошибка</h1>
+    <p class="section-subtitle" style="border: none;">Извините, при обработке запроса возникла непредвиденная ошибка.</p>
+
+    @if (Model.ShowRequestId)
+    {
+        <p style="color: var(--color-muted); font-size: .9rem;">
+            <strong>ID запроса:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <a asp-page="/Index" class="btn-primary" style="margin-top: 1.5rem;">Вернуться на главную</a>
+</div>

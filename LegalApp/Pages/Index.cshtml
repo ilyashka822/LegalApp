@@ -1,0 +1,136 @@
+﻿@page
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <span class="eyebrow">Юридическая практика · Ставрополь</span>
+            <h1>Закон - владыка мира,</h1>
+            <h1>И я в нем разбираюсь!</h1>
+            <p>
+                Общее юридическое направление, специфика взаимодействия с
+                правоохранительными, судебными органами, учреждениями и
+                организациями, практическое применение уголовного законодательства,
+                консультации в области медиации.
+            </p>
+            <p class="hero-text-btn">Откладывая свой вопрос сегодня – завтра их может быть уже больше!</p>
+            <div class="hero-actions">
+                <a asp-page="/Contacts" class="btn btn-primary">Обсудить ситуацию</a>
+                <a asp-page="/Services" class="btn btn-ghost">Направления работы</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-photo">
+                <img src="~/img/Car_photo.jpg" alt="Березуцкий Юрий Васильевич">
+            </div>
+            <div class="hero-badge">
+                <span class="hero-badge-num">20+</span>
+                <span class="hero-badge-text">лет практики в области юриспруденции</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">лет юридической практики</div>
+        </div>
+        @* <div class="stat">
+            <div class="stat-num">9</div>
+            <div class="stat-label">направлений деятельности</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">2</div>
+            <div class="stat-label">высших образования</div>
+        </div> *@
+        <div class="stat">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">онлайн-консультации</div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-inner">
+        <span class="eyebrow">Направления</span>
+        <h2 class="section-title">Правовая помощь для частных лиц и бизнеса</h2>
+        <p class="section-lead">Широкий спектр юридических услуг — от консультации до представительства в суде.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-num">01</span>
+                <h3>Гражданское законодательство</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">02</span>
+                <h3>Семейное право</h3>
+                @* <p>Расторжение брака, раздел имущества, алименты, споры о детях, брачные договоры.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">03</span>
+                <h3>Уголовное и уголовно-процессуальное законодательство</h3>
+                @* <p>Консультации по уголовному и уголовно-процессуальному законодательству, защита на следствии и в суде.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">04</span>
+                <h3>Услуги для юридических лиц (бизнеса)</h3>
+                @* <p>Корпоративное право, договорная работа, налоговые споры, трудовые отношения с персоналом.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">05</span>
+                <h3>Жилищное и земельное законодательство</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">06</span>
+                <h3>Трудовое законодательство</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">07</span>
+                <h3>Исполнительное производство</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">08</span>
+                <h3>Корпоративное право</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">09</span>
+                <h3>Договорная работа</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">10</span>
+                <h3>Административное законодательство</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">11</span>
+                <h3>Наследственное право</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+            <div class="service-card">
+                <span class="service-num">12</span>
+                <h3>Налоговое право</h3>
+                @* <p>Жилищные и земельные споры, трудовое право, защита прав потребителей, наследственные дела.</p> *@
+            </div>
+
+        </div>
+    </div>
+</section>
+@* 
+<section class="cta">
+    <div class="cta-inner">
+        <h2>Не откладывайте решение правового вопроса</h2>
+        <p>Первичная консультация поможет оценить ситуацию и определить перспективы дела.</p>
+        <a asp-page="/Contacts" class="btn btn-primary">Связаться</a>
+    </div>
+</section> *@

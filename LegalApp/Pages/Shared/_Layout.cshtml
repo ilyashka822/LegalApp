@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — ЮриСтПрофи26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a asp-page="/Index" class="logo">
+                <span class="logo-mark">Ю</span>
+                <span class="logo-text">
+                    <span class="logo-name">ЮриСтПрофи26</span>
+                </span>
+            </a>
+
+            <button class="burger" id="burger" aria-label="Меню">
+                <span></span>
+            </button>
+
+            <nav class="nav" id="nav">
+                <a asp-page="/About">О себе</a>
+                <a asp-page="/Services">Направления</a>
+                @* <a asp-page="/Practice">Практика</a> *@
+                <a asp-page="/Price">Стоимость</a>
+                <a asp-page="/Contacts">Контакты</a>
+            </nav>
+
+            <a href="tel:+79054133758" class="header-phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                +7 (905) 413-37-58
+            </a>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span class="logo-mark">Ю</span>
+                    <span class="logo-name">ЮриСтПрофи26</span>
+                </div>
+                <p>Юридическая практика. Более 20 лет в юриспруденции. Гражданские, семейные, уголовные и корпоративные дела.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Разделы</h4>
+                <a asp-page="/About">О себе</a>
+                <a asp-page="/Services">Направления</a>
+                @* <a asp-page="/Practice">Практика</a> *@
+                <a asp-page="/Price">Стоимость</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <a href="tel:+79054133758">+7 (905) 413-37-58</a>
+                <a href="mailto:berezutskiy.u@mail.ru">berezutskiy.u@mail.ru</a>
+                <p>г. Ставрополь, ул. Тухачевского, д. 28/1, офис 77</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© @DateTime.Now.Year ЮриСтПрофи26. Все права защищены.</span>
+            <span>ИФНС № 120227278/2026 г.</span>
+        </div>
+    </footer>
+
+    <!-- Плавающая кнопка «Обсудить ситуацию» -->
+    <button class="floating-cta" id="floatingCta" type="button" aria-label="Обсудить ситуацию">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <span>Обсудить ситуацию</span>
+    </button>
+
+    <!-- Стрелка вверх -->
+    <button class="to-top" id="toTop" type="button" aria-label="Наверх">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="contactModal" aria-hidden="true">
+        <div class="modal-overlay" data-close></div>
+        <div class="modal-window" role="dialog" aria-modal="true">
+            <button class="modal-close" type="button" data-close aria-label="Закрыть">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="modal-head">
+                <h2 class="modal-title">Обсудить ситуацию</h2>
+                <p class="modal-subtitle">Оставьте заявку — свяжусь с вами в ближайшее время.</p>
+            </div>
+
+            <form class="modal-form" id="contactForm" method="post" action="/api/contact">
+                <div class="form-field">
+                    <label class="form-label" for="situation">Ситуация <span>*</span></label>
+                    <select class="form-select" id="situation" name="situation" required>
+                        <option value="">— Выберите направление —</option>
+                        <option>Консультация</option>
+                        <option>Семейное право</option>
+                        <option>Гражданское право</option>
+                        <option>Жилищное право</option>
+                        <option>Земельное право</option>
+                        <option>Трудовое право</option>
+                        <option>Наследственное право</option>
+                        <option>Защита прав потребителей</option>
+                        <option>Кредиты и банкротство</option>
+                        <option>Исполнительное производство</option>
+                        <option>Уголовное право</option>
+                        <option>Административное право</option>
+                        <option>Корпоративное право</option>
+                        <option>Договорная работа</option>
+                        <option>Налоговое право</option>
+                        <option>Медиация</option>
+                        <option>Представительство в суде</option>
+                        <option>Другое</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="format">Формат работы <span>*</span></label>
+                    <select class="form-select" id="format" name="format" required>
+                        <option value="">— Выберите формат —</option>
+                        <option>Устная консультация</option>
+                        <option>Письменная консультация</option>
+                        <option>Составление документа</option>
+                        <option>Представительство в суде</option>
+                        <option>Ведение дела под ключ</option>
+                        <option>Онлайн-консультация</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="urgency">Срочность</label>
+                        <select class="form-select" id="urgency" name="urgency">
+                            <option>Не срочно</option>
+                            <option>В течение недели</option>
+                            <option>Срочно (1–2 дня)</option>
+                            <option>Экстренно</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="budget">Бюджет</label>
+                        <select class="form-select" id="budget" name="budget">
+                            <option>Не определён</option>
+                            <option>до 10 000 ₽</option>
+                            <option>10 000 – 30 000 ₽</option>
+                            <option>30 000 – 100 000 ₽</option>
+                            <option>более 100 000 ₽</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="name">Как вас зовут <span>*</span></label>
+                    <input class="form-input" id="name" name="name" type="text" required maxlength="80" placeholder="ФИО">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label class="form-label" for="phone">Телефон <span>*</span></label>
+                        <input class="form-input" id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-input" id="email" name="email" type="email" placeholder="mail@example.com">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="comment">Кратко о ситуации</label>
+                    <textarea class="form-textarea" id="comment" name="comment" maxlength="1000" placeholder="Опишите, что случилось, в свободной форме"></textarea>
+                </div>
+
+                <label class="form-check">
+                    <input type="checkbox" name="consent" required>
+                    <span>Согласен на обработку персональных данных в соответствии с <a asp-page="/PrivacyPolicy" target="_blank">политикой конфиденциальности</a></span>
+                </label>
+
+                <button class="modal-submit" type="submit" id="submitBtn">Отправить заявку</button>
+
+                <div class="modal-message" id="modalMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+            // --- Бургер ---
+            const burger = document.getElementById('burger');
+            const nav = document.getElementById('nav');
+            burger?.addEventListener('click', () => {
+                burger.classList.toggle('open');
+                nav.classList.toggle('open');
+            });
+
+            // --- Стрелка вверх ---
+            const toTop = document.getElementById('toTop');
+            window.addEventListener('scroll', () => {
+                toTop?.classList.toggle('visible', window.scrollY > 400);
+            });
+            toTop?.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // --- Модальное окно ---
+            const modal = document.getElementById('contactModal');
+            const form = document.getElementById('contactForm');
+            const message = document.getElementById('modalMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const situationSelect = document.getElementById('situation');
+
+            function openModal(presetSituation) {
+                if (presetSituation && situationSelect) {
+                    const opt = Array.from(situationSelect.options)
+                        .find(o => o.value === presetSituation || o.textContent.trim() === presetSituation);
+                    if (opt) situationSelect.value = opt.value || opt.textContent;
+                }
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            document.getElementById('floatingCta')?.addEventListener('click', () => openModal());
+
+            document.querySelectorAll('.price-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const preset = card.getAttribute('data-situation') || '';
+                    openModal(preset);
+                });
+            });
+
+            modal?.addEventListener('click', (e) => {
+                const closer = e.target.closest('[data-close]');
+                if (closer) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+
+            // --- Отправка формы ---
+            form?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправляем…';
+                message.className = 'modal-message';
+                message.textContent = '';
+
+                try {
+                    const formData = new FormData(form);
+
+                    // Собираем payload вручную — с правильными типами
+                    const payload = {
+                        situation: formData.get('situation') || '',
+                        format: formData.get('format') || '',
+                        urgency: formData.get('urgency') || '',
+                        budget: formData.get('budget') || '',
+                        name: formData.get('name') || '',
+                        phone: formData.get('phone') || '',
+                        email: formData.get('email') || '',
+                        comment: formData.get('comment') || '',
+                        consent: formData.get('consent') === 'on'   // строка → bool
+                    };
+
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await res.json().catch(() => ({}));
+
+                    if (!res.ok) {
+                        console.warn('Ответ сервера:', data);
+                        throw new Error(data.error || 'Ошибка отправки');
+                    }
+
+                    message.className = 'modal-message ok';
+                    message.textContent = 'Заявка отправлена. Свяжусь с вами в ближайшее время.';
+                    form.reset();
+
+                    setTimeout(() => {
+                        closeModal();
+                        message.className = 'modal-message';
+                    }, 5000);
+                } catch (err) {
+                    console.error(err);
+                    message.className = 'modal-message err';
+                    message.textContent = 'Не удалось отправить заявку. Позвоните, пожалуйста, по телефону.';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Отправить заявку';
+                }
+            });
+    </script>
+</body>
+</html>
